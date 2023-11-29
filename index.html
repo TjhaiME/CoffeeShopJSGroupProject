@@ -47,180 +47,37 @@
             <p>Insert contact form here</p>
         </form>
       </div> -->
+      <!-- rewriting for a dynamically generated shop -->
+      <div id="bigShopDiv">
+        <div id="shop">
 
-
-      <div id="shop">
-        <div class="shopItem" id="shopItem1">
-          <div class="shopItem__img">
-            <img
-              class="productImg"
-              src="./images/bagels.webp"
-              alt="image of bagel for shop"
-            />
-          </div>
-          <div class="shopItem__content">
-            <h3>Bagel</h3>
-            <p>$12</p>
-          </div>
-          <div class="shopItem__button">
-            <button class="cartBtn" type="button"><i class="fa-solid fa-cart-shopping"></i> Add To Cart</button>
-          </div>
-        </div>
-
-        <div class="shopItem" id="shopItem1">
-          <div class="shopItem__img">
-            <img
-              class="productImg"
-              src="./images\Croissant.webp"
-              alt="image of bagel for shop"
-            />
-          </div>
-          <div class="shopItem__content">
-            <h3>croissant</h3>
-            <p>$6</p>
-          </div>
-          <div class="shopItem__button">
-            <button class="cartBtn" type="button"><i class="fa-solid fa-cart-shopping"></i> Add To Cart</button>
-          </div>
-        </div>
-
-        <div class="shopItem" id="shopItem2">
-          <div class="shopItem__img">
-            <img
-              class="productImg"
-              src="./images/coffee.webp"
-              alt="image of coffee for shop"
-            />
-          </div>
-          <div class="shopItem__content">
-            <h3>Coffee</h3>
-            <p>$5</p>
-          </div>
-          <div class="shopItem__button">
-            <button class="cartBtn" type="button"><i class="fa-solid fa-cart-shopping"></i> Add To Cart</button>
-          </div>
-        </div>
-        <div class="shopItem" id="shopItem3">
-          <div class="shopItem__img">
-            <img
-              class="productImg"
-              src="./images/latte.jpeg"
-              alt="image of iced latte for shop"
-            />
-          </div>
-          <div class="shopItem__content">
-            <h3>Iced Latte</h3>
-            <p>$7</p>
-          </div>
-          <div class="shopItem__button">
-            <button class="cartBtn" type="button"><i class="fa-solid fa-cart-shopping"></i> Add To Cart</button>
-          </div>
-        </div>
-        <div class="shopItem" id="shopItem4">
-          <div class="shopItem__img">
-            <img
-              class="productImg"
-              src="./images/Dougnuts-AB.jpg"
-              alt="image of doughnuts for shop"
-            />
-          </div>
-          <div class="shopItem__content">
-            <h3>Dougnuts (3)</h3>
-            <p>$12</p>
-          </div>
-          <div class="shopItem__button">
-            <button class="cartBtn" type="button"><i class="fa-solid fa-cart-shopping"></i> Add To Cart</button>
-          </div>
-        </div>
-        <div class="shopItem" id="shopItem5">
-          <div class="shopItem__img">
-            <img
-              class="productImg"
-              src="./images/muffins.webp"
-              alt="image of muffins for shop"
-            />
-          </div>
-          <div class="shopItem__content">
-            <h3>Muffin</h3>
-            <p>$5</p>
-          </div>
-          <div class="shopItem__button">
-            <button class="cartBtn" type="button"><i class="fa-solid fa-cart-shopping"></i> Add To Cart</button>
-          </div>
         </div>
       </div>
-    <!--Shopping cart-->
+<!-- old code starts here -->
+      <!-- 
+      <div id="shop">
+      </div> -->
+   
+      <!--Shopping cart-->
         <div class="cart" id="cart">
           <h3 class="cart_heading">Shopping Cart</h3>
-          <div class="cartitems">
-          <div class="cartitem">
-              
-              <div class="cart_image">
-              <img src="images\coffee.webp" alt="">
-              </div>
-              
-              <div class="carttext">
-                  <h2 class="carttext_h2">Coffee</h2>
-                  <h3 class="carttext_h3">Medium</h3>
-              </div>
-  
-              <div class="item_count">
-                  <div class="count_btn">+</div>
-                  <div class="count">1</div>
-                  <div class="count_btn">-</div>
-              </div>
-  
-              <div class="cost">
-                  <div class="price">$4.99</div>
-                  <div class="remove_btn">Remove</div>
-              </div>
-                 
-          </div>
-          
-          <div class="cartitem">
-              
-            <div class="cart_image">
-            <img src="images\muffins.webp" alt="">
-            </div>
-            
-            <div class="carttext">
-                <h2 class="carttext_h2">Muffin</h2>
-                <h3 class="carttext_h3">Regular</h3>
-            </div>
-
-            <div class="item_count">
-                <div class="count_btn">+</div>
-                <div class="count">2</div>
-                <div class="count_btn">-</div>
-            </div>
-
-            <div class="cost">
-                <div class="price">$5.99</div>
-                <div class="remove_btn">Remove</div>
-            </div>
-               
-        </div>
-        </div>
-  
-      <div class="checkout">
-          <div class="total">
-          <div>
-          <div class="Subtotal">Sub-Total</div>
-          <div class="items">2 items</div>
-          </div>
-          <div class="total-cost">$6.18</div>
-          </div>
-          <button class="btn">Checkout</button>
+          <div class="cartitems" id="cartItems">
           </div>
      
-      </div>
+        </div>
     </main>
 
     <footer>
       <!--copyright logos anf back to top link-->
       <div class="footLogo"></div>
-      <p id="copyrightText">copyright @ Our Awesome Coffee Shop</p>
+      <p id="copyrightText">copywrong @ Our Awesome Coffee Shop</p>
       <nav><a href="#header">Back To Top</a></nav>
     </footer>
+
+
+    <p id="datetime"></p>
+    <!-- move date and time later -->
+    <script src="./script.js"></script>
+
   </body>
 </html>
