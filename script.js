@@ -176,7 +176,7 @@ function generate_shop_div(){
         //we also need to create buttons
         let buttonDiv = document.createElement("div");
         buttonDiv.className = "shopItem__button"
-
+        buttonDiv.setAttribute("onclick", "add_button('"+shopObjectKey+"')");
         let buttonElmnt = document.createElement("button")
         buttonElmnt.className = "cartBtn"
         buttonElmnt.type = "button"
