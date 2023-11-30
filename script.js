@@ -12,9 +12,14 @@ setInterval(updateDateTime, 1000) //have to pass to setInterval without the brac
 
 //fetch doesnt work with the 2nd url
 //fetch('https://jsonplaceholder.typicode.com/posts/1')
-fetch('https://github.com/OnlineProjectsGit/API/blob/main/WDEndpoint.json')
+fetch('https://github.com/OnlineProjectsGit/API/blob/main/WDEndpoint.json', {
+    method: 'GET',
+    headers: {
+        'Accept': 'application/json',
+    },
+})
   .then((response) => {return response.json()})
-  .then((json) => console.log(json));
+  .then((json) => console.log(JSON.stringify(json)));
 
 let shopObjects = {
     "Bagel" : {
