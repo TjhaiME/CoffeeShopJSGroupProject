@@ -74,9 +74,9 @@ let shopObjectsDefault = {
     "altText" : "noAltTestGiven" //text for screen readers
 }//NOTE we do not use this shopObjectsDefault it's so we have something to copy paste the shop data into
 
-let cartObjects = {
-    //Key_of_shop_object : amount_of_them
-}
+let cartObjects = {}
+//Key_of_shop_object : amount_of_them
+//}
 //When we click a button it should add/remove values from this object
 
 //we need to handle "end cases"
@@ -215,9 +215,16 @@ function generate_shop_div(){
   
 }
 
-function generate_cart_div(){
+function generate_cart_div(skipSave = false){
     //save cart when we refresh it
-    localStorage.setItem("myCart", cartObjects);
+    // console.log("cartObjects before save = ")
+    // console.log(cartObjects)
+    // console.log("cartObjects stringified = ")
+    // console.log(JSON.stringify(cartObjects))
+    if(!skipSave){ //skipSave == false
+        //Use a default variable to avoid calling this for the BAD BUG FIX that could be avoided by just adding HTML (which if done would make the default variable redundant)
+        localStorage.setItem("myCart", JSON.stringify(cartObjects));
+    }
 
 
     //we want to add to the cartItems id div
@@ -353,16 +360,17 @@ generate_shop_div()
 
 ///BAD BUG FIX:
 cartObjects["Coffee"] = 1
-generate_cart_div()
-remove_button("Coffee")
+generate_cart_div(true) //NOTE: This is the only place I use a variable for this function, so if we fix and delete this we can also reduce that function
+delete cartObjects["Coffee"]
+generate_cart_div(true)
 //END BAD BUG FIX
 //Should've just not delted stuff when converting HTML to Javascript
 
 
 
-let newCartObjects = localStorage.getItem("myCart");
-console.log("newCartObjects = ")
-console.log(newCartObjects)
+cartObjects = JSON.parse(localStorage.getItem("myCart"));
+// console.log("newCartObjects = ")
+// console.log(newCartObjects)
 //this prints : object Object
 //whether it is empty or not
 
