@@ -12,7 +12,14 @@ setInterval(updateDateTime, 1000) //have to pass to setInterval without the brac
 
 //fetch doesnt work with the 2nd url
 //fetch('https://jsonplaceholder.typicode.com/posts/1')
-fetch('https://github.com/OnlineProjectsGit/API/blob/main/WDEndpoint.json', {
+let EliasURL = 'https://github.com/OnlineProjectsGit/API/blob/main/WDEndpoint.json'
+let quickPreFIX = "https://cors-anywhere.herokuapp.com/"//quick fix for the bug that happens to be a prefix
+//THIS IS BAD
+//Lucas Moy's response to this question "https://stackoverflow.com/questions/29612800/load-json-from-github-file"
+//This is not a good solution because you have to request temporary access
+//then you have to refresh
+//then it works but I think only for local server, which is bad because the last step is to put on github live pages
+fetch(quickPreFIX+EliasURL, {
     method: 'GET',
     headers: {
         'Accept': 'application/json',
