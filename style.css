@@ -74,6 +74,17 @@ main{
     width:60%;
     justify-content: space-around;
 }
+/*copy pasted bigShopDiv */
+#bigShopDiv{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: var(--boneWhite);
+    margin: auto;
+    padding: 100px 0;
+    width:60%;
+    justify-content: space-around;
+}
 #cart{
     background-color: var(--rawBean);
 }

@@ -7,7 +7,10 @@ function updateDateTime() {
     var formattedDate = currentDate.toLocaleDateString('en-US', options);
     document.getElementById('datetime').textContent = formattedDate; 
 } // Call the function when the page is loaded window.onload = function () { updateDateTime(); }
-//fetch
+updateDateTime()
+setInterval(updateDateTime, 1000) //have to pass to setInterval without the brackets
+
+//fetch doesnt work with the 2nd url
 //fetch('https://jsonplaceholder.typicode.com/posts/1')
 fetch('https://github.com/OnlineProjectsGit/API/blob/main/WDEndpoint.json')
   .then((response) => {return response.json()})
@@ -74,11 +77,12 @@ function add_endcase(shopObjectKey){
         cartObjects[shopObjectKey] = 1
     }
 }
-function remove_endcase(shopObjectKey){
+function minus_endcase(shopObjectKey){
     if (shopObjectKey in cartObjects){
         if(cartObjects[shopObjectKey] == 1){
             //remove from object entirely
-            delete cartObjects[shopObjectKey]
+            //delete cartObjects[shopObjectKey]
+            //only do with remove
         }else{
             cartObjects[shopObjectKey] -= 1 //subtract 1 from the value
         }
@@ -200,6 +204,10 @@ function generate_shop_div(){
 }
 
 function generate_cart_div(){
+    //save cart when we refresh it
+    localStorage.setItem("myCart", cartObjects);
+
+
     //we want to add to the cartItems id div
     let outerCartDiv = document.getElementById("cart");
     let oldElmnt = document.getElementById("cartItems");
@@ -280,6 +288,7 @@ function generate_cart_div(){
         let removeDiv = document.createElement("div");
         removeDiv.className = "remove_btn"
         removeDiv.innerText = "Remove"
+        removeDiv.setAttribute("onclick", "remove_button('"+shopObjectKey+"')");
         costDiv.appendChild(removeDiv)
         cartItemDiv.appendChild(costDiv)
         
@@ -330,16 +339,35 @@ function generate_cart_div(){
 
 generate_shop_div()
 
+///BAD BUG FIX:
+cartObjects["Coffee"] = 1
+generate_cart_div()
+remove_button("Coffee")
+//END BAD BUG FIX
+//Should've just not delted stuff when converting HTML to Javascript
+
+
+
+let newCartObjects = localStorage.getItem("myCart");
+console.log("newCartObjects = ")
+console.log(newCartObjects)
+//this prints : object Object
+//whether it is empty or not
+
 //adding objects to cart for testing
 //REMOVE for final assesment and create using buttons instead
-cartObjects["Croissant"] = 2
-cartObjects["Coffee"] = 3
+// cartObjects["Croissant"] = 2
+// cartObjects["Coffee"] = 3
 
 generate_cart_div()
 
 
+function remove_button(shopObjectKey){
+    delete cartObjects[shopObjectKey]
+    generate_cart_div()
+}
 function minus_button(shopObjectKey){
-    remove_endcase(shopObjectKey)
+    minus_endcase(shopObjectKey)
     generate_cart_div()
 }
 function add_button(shopObjectKeyParam){
