@@ -1,6 +1,7 @@
 # javascript-project
 
-By:
+By:  
+
 Bradley Richards  
 
 Bryan Jackson  
