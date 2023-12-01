@@ -12,7 +12,7 @@ setInterval(updateDateTime, 1000) //have to pass to setInterval without the brac
 
 //fetch doesnt work with the 2nd url
 let altURL = 'https://jsonplaceholder.typicode.com/posts/1' //If we use this it works
-let EliasURL = 'https://github.com/OnlineProjectsGit/API/WDEndpoint.json' //'https://github.com/OnlineProjectsGit/API/blob/main/WDEndpoint.json'
+let EliasURL = 'https://raw.githubusercontent.com/OnlineProjectsGit/API/main/WDEndpoint.json' //'https://github.com/OnlineProjectsGit/API/blob/main/WDEndpoint.json'
 //let quickPreFIX = "https://cors-anywhere.herokuapp.com/"//quick fix for the bug that happens to be a prefix
 //THIS IS BAD
 //Lucas Moy's response to this question "https://stackoverflow.com/questions/29612800/load-json-from-github-file"
@@ -23,7 +23,7 @@ let EliasURL = 'https://github.com/OnlineProjectsGit/API/WDEndpoint.json' //'htt
 let fetchedData = {"empty":true}
 
 function getFetch(){
-    return fetch(altURL, { //this is what I interpreted as the asesment critera
+    return fetch(EliasURL, { //this is what I interpreted as the asesment critera
     
         method: 'GET',
         headers: {
@@ -35,7 +35,7 @@ function getFetch(){
         throw new Error(`HTTP error! Status: ${response.status}`);
         return response.json();
         })
-      .then((json) => {fetchedData = json;
+      .then((json) => {//fetchedData = json;
         console.log(JSON.stringify(json));
         return json;})
       .catch(error => {
@@ -47,8 +47,8 @@ function getFetch(){
 async function useFetch(){
     fetchedData = await getFetch();
     //console.log("fetchedData = ")
-    //console.log(fetchedData)
-    document.getElementById('fetchText').textContent = fetchedData["title"]
+    console.log(fetchedData.info.learners[1])
+    document.getElementById('fetchText').textContent = fetchedData.info.learners[1]+' cafe'
 }
 
 useFetch()
