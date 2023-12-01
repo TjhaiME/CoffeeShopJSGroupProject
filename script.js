@@ -11,7 +11,7 @@ updateDateTime()
 setInterval(updateDateTime, 1000) //have to pass to setInterval without the brackets
 
 //fetch doesnt work with the 2nd url
-//fetch('https://jsonplaceholder.typicode.com/posts/1')
+//fetch('https://jsonplaceholder.typicode.com/posts/1') //If we use this it works
 let EliasURL = 'https://github.com/OnlineProjectsGit/API/WDEndpoint.json' //'https://github.com/OnlineProjectsGit/API/blob/main/WDEndpoint.json'
 let quickPreFIX = "https://cors-anywhere.herokuapp.com/"//quick fix for the bug that happens to be a prefix
 //THIS IS BAD
@@ -19,8 +19,8 @@ let quickPreFIX = "https://cors-anywhere.herokuapp.com/"//quick fix for the bug 
 //This is not a good solution because you have to request temporary access
 //then you have to refresh
 //then it works but I think only for local server, which is bad because the last step is to put on github live pages
-//fetch(quickPreFIX+EliasURL, {
-fetch(EliasURL, {
+fetch(quickPreFIX+EliasURL, { //this Is the bad fix
+//fetch(EliasURL, { //this is what I interpreted as the asesment critera
     method: 'GET',
     headers: {
         'Accept': 'application/json',
