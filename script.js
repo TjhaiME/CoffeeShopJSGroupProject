@@ -11,23 +11,64 @@ updateDateTime()
 setInterval(updateDateTime, 1000) //have to pass to setInterval without the brackets
 
 //fetch doesnt work with the 2nd url
-//fetch('https://jsonplaceholder.typicode.com/posts/1') //If we use this it works
+let altURL = 'https://jsonplaceholder.typicode.com/posts/1' //If we use this it works
 let EliasURL = 'https://github.com/OnlineProjectsGit/API/WDEndpoint.json' //'https://github.com/OnlineProjectsGit/API/blob/main/WDEndpoint.json'
-let quickPreFIX = "https://cors-anywhere.herokuapp.com/"//quick fix for the bug that happens to be a prefix
+//let quickPreFIX = "https://cors-anywhere.herokuapp.com/"//quick fix for the bug that happens to be a prefix
 //THIS IS BAD
 //Lucas Moy's response to this question "https://stackoverflow.com/questions/29612800/load-json-from-github-file"
 //This is not a good solution because you have to request temporary access
 //then you have to refresh
 //then it works but I think only for local server, which is bad because the last step is to put on github live pages
-fetch(quickPreFIX+EliasURL, { //this Is the bad fix
-//fetch(EliasURL, { //this is what I interpreted as the asesment critera
-    method: 'GET',
-    headers: {
-        'Accept': 'application/json',
-    },
-})
-  .then((response) => {return response.json()})
-  .then((json) => console.log(JSON.stringify(json)));
+//fetch(quickPreFIX+EliasURL, { //this Is the bad fix
+let fetchedData = {"empty":true}
+
+function getFetch(){
+    return fetch(altURL, { //this is what I interpreted as the asesment critera
+    
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+        },
+    })
+      .then(response => {
+        if (!response.ok)
+        throw new Error(`HTTP error! Status: ${response.status}`);
+        return response.json();
+        })
+      .then((json) => {fetchedData = json;
+        console.log(JSON.stringify(json));
+        return json;})
+      .catch(error => {
+            // Handle errors
+            console.error('Error fetching JSON:', error);
+        })
+}
+
+async function useFetch(){
+    fetchedData = await getFetch();
+    //console.log("fetchedData = ")
+    //console.log(fetchedData)
+    document.getElementById('fetchText').textContent = fetchedData["title"]
+}
+
+useFetch()
+
+// fetch(altURL, { //this is what I interpreted as the asesment critera
+    
+//     method: 'GET',
+//     headers: {
+//         'Accept': 'application/json',
+//     },
+// })
+//   .then((response) => {return response.json()})
+//   .then((json) => {fetchedData = json;
+//     console.log(JSON.stringify(json));
+//     return json;})
+
+//now add some info into the webpaGE
+// console.log("fetchedData = ")
+// console.log(fetchedData)
+// document.getElementById('fetchText').textContent = fetchedData["title"]
 
 let shopObjects = {
     "Bagel" : {
