@@ -37,7 +37,7 @@ let shopObjects = {
         "altText" : "image of bagel for shop" //text for screen readers
     },
     "Croissant" : {
-        "price" : 690000,
+        "price" : 6,
         "amountPerPurchase" : 1,
         "imgLink" : "./images/Croissant.webp",
         "altText" : "image of croissant for shop"
