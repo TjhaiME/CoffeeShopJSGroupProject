@@ -12,14 +12,15 @@ setInterval(updateDateTime, 1000) //have to pass to setInterval without the brac
 
 //fetch doesnt work with the 2nd url
 //fetch('https://jsonplaceholder.typicode.com/posts/1')
-let EliasURL = 'https://github.com/OnlineProjectsGit/API/blob/main/WDEndpoint.json'
+let EliasURL = 'https://github.com/OnlineProjectsGit/API/WDEndpoint.json' //'https://github.com/OnlineProjectsGit/API/blob/main/WDEndpoint.json'
 let quickPreFIX = "https://cors-anywhere.herokuapp.com/"//quick fix for the bug that happens to be a prefix
 //THIS IS BAD
 //Lucas Moy's response to this question "https://stackoverflow.com/questions/29612800/load-json-from-github-file"
 //This is not a good solution because you have to request temporary access
 //then you have to refresh
 //then it works but I think only for local server, which is bad because the last step is to put on github live pages
-fetch(quickPreFIX+EliasURL, {
+//fetch(quickPreFIX+EliasURL, {
+fetch(EliasURL, {
     method: 'GET',
     headers: {
         'Accept': 'application/json',
@@ -357,6 +358,7 @@ function generate_cart_div(skipSave = false){
 //to actually tell the computer what to do
 
 generate_shop_div()
+//localStorage.clear()
 
 ///BAD BUG FIX:
 cartObjects["Coffee"] = 1
@@ -367,8 +369,19 @@ generate_cart_div(true)
 //Should've just not delted stuff when converting HTML to Javascript
 
 
+//localStorage.clear()
 
-cartObjects = JSON.parse(localStorage.getItem("myCart"));
+//LOAD SYSTEM
+let loadedThingo = JSON.parse(localStorage.getItem("myCart"))
+if(loadedThingo == null){
+    console.log("failed to load")
+    cartObject = {}
+}else{
+    console.log("suceeded at loading")
+    console.log(loadedThingo)
+    cartObjects = loadedThingo
+}
+
 // console.log("newCartObjects = ")
 // console.log(newCartObjects)
 //this prints : object Object
